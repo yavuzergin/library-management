@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.yavuz.library.books.model.Book;
 import org.yavuz.library.members.model.Member;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -18,7 +19,7 @@ import java.util.Date;
 public class LibraryManagement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
@@ -34,7 +35,7 @@ public class LibraryManagement {
     private int borrowDuration;
 
     @Column(name = "return_date")
-    private Date returnDate;
+    private LocalDate returnDate;
 
     @Column(name = "status")
     private String status;

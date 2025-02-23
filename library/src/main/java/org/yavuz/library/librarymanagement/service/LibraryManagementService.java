@@ -2,8 +2,10 @@ package org.yavuz.library.librarymanagement.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.yavuz.library.books.repository.BookRepository;
 import org.yavuz.library.librarymanagement.DTO.GiveBookRequest;
+import org.yavuz.library.librarymanagement.DTO.RetrieveMemberBooksResponse;
 import org.yavuz.library.librarymanagement.DTO.ReturnBookRequest;
 import org.yavuz.library.librarymanagement.repository.LibraryManagementRepository;
 import org.yavuz.library.members.repository.MemberRepository;
@@ -57,5 +59,12 @@ public class LibraryManagementService {
                         Collectors.mapping(bm -> bm.getBook().getBookName() + " " + bm.getBook().getBookAuthor(), Collectors.joining(", "))
                 ));
         return bms;
+    }
+    public List<RetrieveMemberBooksResponse> retrieveMemberBooks(Long id) {
+        return libraryManagementRepository.retrieveResponseByMemberId(id);
+    }
+    @Transactional
+    public void returnBooks(Long memberId, Long bookId){
+        libraryManagementRepository.returnBooks(memberId, bookId);
     }
 }

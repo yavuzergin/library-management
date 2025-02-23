@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -12,6 +13,6 @@ import java.util.Date;
 public class ReturnBookRequest {
     private long memberId;
     private long bookId;
-    private Date returnDate;
+    private LocalDate returnDate;
     private String status;
 }

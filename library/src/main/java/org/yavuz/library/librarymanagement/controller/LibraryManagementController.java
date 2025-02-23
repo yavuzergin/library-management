@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.yavuz.library.librarymanagement.DTO.RetrieveMemberBooksResponse;
 import org.yavuz.library.librarymanagement.model.LibraryManagement;
 import org.yavuz.library.librarymanagement.DTO.ReturnBookRequest;
 import org.yavuz.library.librarymanagement.DTO.GiveBookRequest;
@@ -36,5 +37,13 @@ public class LibraryManagementController {
     @GetMapping("/who-take-which-book")
     public Map<String, String> whoTakeWhichBook(){
         return libraryManagementService.whoTakeWhichBook();
+    }
+    @GetMapping("/retrieve-member-books/{id}")
+    public List<RetrieveMemberBooksResponse> retrieveMemberBooks (@PathVariable Long id){
+        return libraryManagementService.retrieveMemberBooks(id);
+    }
+    @GetMapping("/return-book/{memberId}/{bookId}")
+    public void returnBook(@PathVariable Long memberId, @PathVariable Long bookId){
+        libraryManagementService.returnBooks(memberId, bookId);
     }
 }
