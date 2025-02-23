@@ -43,7 +43,8 @@ public class LibraryManagementController {
         return libraryManagementService.retrieveMemberBooks(id);
     }
     @GetMapping("/return-book/{memberId}/{bookId}")
-    public void returnBook(@PathVariable Long memberId, @PathVariable Long bookId){
+    public ResponseEntity<String> returnBook(@PathVariable Long memberId, @PathVariable Long bookId){
         libraryManagementService.returnBooks(memberId, bookId);
+        return ResponseEntity.ok("updated");
     }
 }
