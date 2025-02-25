@@ -32,8 +32,8 @@ public class LibraryManagementService {
         final Book book = bookRepository.findById(input.getBookId())
                 .orElseThrow(() -> new ResourceNotFoundException(input.getBookId() + "numaralı kitap bulunamadı."));
 
-        final String isBookAvailable = libraryManagementRepository.bookAvailabilityCheck(input.getBookId());
-        if (isBookAvailable != null && isBookAvailable.equals("Kitap kullanımda.")) {
+        final String bookAvailabilityCheck = libraryManagementRepository.bookAvailabilityCheck(input.getBookId());
+        if (bookAvailabilityCheck != null && bookAvailabilityCheck.equals("Kitap kullanımda.")) {
             throw new ResourceNotFoundException(input.getBookId() + " numaralı kitap başka bir üyenin kullanımında. " +
                     "Lütfen kitabın iade edilmesini bekleyiniz.");
         }
@@ -65,7 +65,7 @@ public class LibraryManagementService {
         return libraryManagementRepository.retrieveResponseByMemberId(id);
     }
 
-    //Kitap iadesinde statusu güncelleme işlemi.
+    //Kitap iadesinde status güncelleme.
     @Transactional
     public void returnBookStatus(Long memberId, Long bookId) {
         libraryManagementRepository.updateBookAvailabilityStatus(memberId, bookId);

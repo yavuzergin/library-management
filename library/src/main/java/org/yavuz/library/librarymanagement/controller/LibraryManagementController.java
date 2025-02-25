@@ -29,6 +29,13 @@ public class LibraryManagementController {
         return libraryManagementService.giveBook(input);
     }
 
+    @PostMapping("/return-book/{memberId}/{bookId}")
+    public ResponseEntity<String> returnBook(@PathVariable Long memberId, @PathVariable Long bookId) {
+        libraryManagementService.returnBookStatus(memberId, bookId);
+        libraryManagementService.returnBook(memberId, bookId);
+        return ResponseEntity.ok("Kitap iade edildi.");
+    }
+
     @PutMapping("/update-lm/{id}")
     public ResponseEntity<LibraryManagement> lmUpdate(@PathVariable Long id, @RequestBody LibraryManagement lmDetails) {
         LibraryManagement lm = libraryManagementService.updateBorrowDuration(id, lmDetails);
@@ -40,14 +47,6 @@ public class LibraryManagementController {
         return libraryManagementService.retrieveMemberBooks(id);
     }
 
-    //Kitap iade etme.
-    @PostMapping("/return-book/{memberId}/{bookId}")
-    public ResponseEntity<String> returnBook(@PathVariable Long memberId, @PathVariable Long bookId) {
-        libraryManagementService.returnBookStatus(memberId, bookId);
-        libraryManagementService.returnBook(memberId, bookId);
-        return ResponseEntity.ok("Kitap iade edildi.");
-    }
-
 }
 
     /*
@@ -56,7 +55,6 @@ public class LibraryManagementController {
         libraryManagementService.returnBookStatus(memberId, bookId);
         return ResponseEntity.ok("Kitap durumu güncellendi.");
     }
-
 
     /*@PostMapping("/return-book")
     public LibraryManagement returnBook(@RequestBody ReturnBookRequest input) {
