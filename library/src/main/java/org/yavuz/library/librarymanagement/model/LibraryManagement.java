@@ -28,8 +28,9 @@ public class LibraryManagement {
     @JoinColumn(name = "book_id")
     private Book book;
 
+
     @Column(name = "issue_date")
-    private Date issueDate;
+    private LocalDate issueDate;
 
     @Column(name = "borrow_duration")
     private int borrowDuration;
@@ -39,4 +40,5 @@ public class LibraryManagement {
 
     @Column(name = "status")
     private String status;
+
 }

@@ -1,9 +1,11 @@
 package org.yavuz.library.librarymanagement.DTO;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -12,6 +14,6 @@ import java.util.Date;
 public class GiveBookRequest {
     private long memberId;
     private long bookId;
-        private Date issueDate;
+    private LocalDate issueDate;
     private int borrowDuration;
 }

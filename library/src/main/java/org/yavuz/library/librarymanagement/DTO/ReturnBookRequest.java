@@ -14,5 +14,4 @@ public class ReturnBookRequest {
     private long memberId;
     private long bookId;
     private LocalDate returnDate;
-    private String status;
 }
