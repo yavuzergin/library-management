@@ -36,10 +36,10 @@ public class LibraryManagementController {
         return ResponseEntity.ok("Kitap iade edildi.");
     }
 
-    @PutMapping("/update-lm/{id}")
-    public ResponseEntity<LibraryManagement> lmUpdate(@PathVariable Long id, @RequestBody LibraryManagement lmDetails) {
-        LibraryManagement lm = libraryManagementService.updateBorrowDuration(id, lmDetails);
-        return ResponseEntity.ok(lm);
+    @PutMapping("/update-borrow-duration/{id}")
+    public ResponseEntity<LibraryManagement> updateBookBorrowDuration(@PathVariable Long id, @RequestBody LibraryManagement borrowDurationDetails) {
+        LibraryManagement borrowDuration = libraryManagementService.updateBorrowDuration(id, borrowDurationDetails);
+        return ResponseEntity.ok(borrowDuration);
     }
 
     @GetMapping("/retrieve-member-books/{id}")

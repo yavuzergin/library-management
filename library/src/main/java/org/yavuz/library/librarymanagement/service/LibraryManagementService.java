@@ -54,10 +54,10 @@ public class LibraryManagementService {
 
     //Kitabın kullanım süresini uzatma - kısaltma için güncelleme işlemi.
     public LibraryManagement updateBorrowDuration(Long id, LibraryManagement lmDetails) {
-        LibraryManagement lm = libraryManagementRepository.findById(id)
+        LibraryManagement borrowDuration = libraryManagementRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(id + " numaralı işlem bulunamadı."));
-        lm.setBorrowDuration(lmDetails.getBorrowDuration());
-        return libraryManagementRepository.save(lm);
+        borrowDuration.setBorrowDuration(lmDetails.getBorrowDuration());
+        return libraryManagementRepository.save(borrowDuration);
     }
 
     //Üye hangi kitabı kullanıyor?
