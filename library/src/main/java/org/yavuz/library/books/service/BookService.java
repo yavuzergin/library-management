@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.yavuz.library.exception.ResourceNotFoundException;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +13,7 @@ import java.util.Map;
 public class BookService {
     @Autowired
     private BookRepository bookRepository;
+
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
